@@ -111,7 +111,7 @@
                 onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/150x40/ffffff/E00034?text=Logo'; }} // Fallback with white bg
               />
               {/* Navbar title */}
-              <h1 className="text-lg sm:text-xl font-semibold hidden sm:block">IA para Profesores del DCSP</h1>
+              <h1 className="text-lg sm:text-xl font-semibold hidden sm:block">IA para profesores del DCSP</h1>
             </div>
             {/* Updated Navbar Links with new Tutoriales link */}
             <ul className="flex flex-wrap space-x-3 sm:space-x-5 text-sm sm:text-base">
@@ -169,10 +169,10 @@
           <h3 className="text-xl font-semibold text-primary mb-3">{name}</h3>
           <div className="flex-grow space-y-2 text-sm text-main"> {/* Use main text color */}
             <p><strong>Descripción:</strong> {description}</p>
-            <p><strong>Usos Sugeridos:</strong> {uses}</p>
+            <p><strong>Usos sugeridos:</strong> {uses}</p>
           </div>
           <p className="text-light text-xs mt-4"> {/* Use secondary text color */}
-            <strong>Requisitos Aprox.:</strong> {requirements}
+            <strong>Requisitos aprox.:</strong> {requirements}
           </p>
         </div>
       );
@@ -269,39 +269,39 @@
                   <SubSection title="Herramientas Pedagógicas Asistidas por IA">
                       <p className="mb-3 text-light">Incorpore la IA de forma controlada en el aula:</p>
                       <ul className="custom-list list-inside space-y-2">
-                          <li><strong>Simulaciones Basadas en Texto:</strong> Plantear escenarios simples donde la IA adopte un rol (ej. "actúa como un diplomático en esta negociación") para que los estudiantes interactúen.</li>
-                          <li><strong>Asistencia a la Escritura (Guiada):</strong> Ayudar a estudiantes a parafrasear (con cita), organizar ideas o detectar errores gramaticales comunes (fomentando la revisión crítica).</li>
-                          <li><strong>Generador de Ejemplos y Casos:</strong> Crear pequeños casos de estudio o ejemplos adaptados a conceptos teóricos específicos que esté enseñando.</li>
-                          <li><strong>Glosarios Rápidos:</strong> Generar definiciones iniciales de términos clave de una lectura (siempre verificar con fuentes académicas).</li>
+                          <li><strong>Simulaciones basadas en texto:</strong> Plantear escenarios simples donde la IA adopte un rol (ej. "actúa como un diplomático en esta negociación") para que los estudiantes interactúen.</li>
+                          <li><strong>Asistencia a la escritura (Guiada):</strong> Ayudar a estudiantes a parafrasear (con cita), organizar ideas o detectar errores gramaticales comunes (fomentando la revisión crítica).</li>
+                          <li><strong>Generador de ejemplos y casos:</strong> Crear pequeños casos de estudio o ejemplos adaptados a conceptos teóricos específicos que esté enseñando.</li>
+                          <li><strong>Glosarios rápidos:</strong> Generar definiciones iniciales de términos clave de una lectura (siempre verificar con fuentes académicas).</li>
                       </ul>
                   </SubSection>
                   <SubSection title="Asistencia en Investigación Cualitativa">
                       <p className="mb-3 text-light">La IA local puede ayudar en etapas iniciales del análisis (con precaución):</p>
                       <ul className="custom-list list-inside space-y-2">
-                          <li><strong>Exploración Temática Inicial:</strong> Identificar posibles temas o palabras clave frecuentes en transcripciones o textos (NO reemplaza el análisis profundo, requiere validación humana).</li>
-                          <li><strong>Resumen de Artículos:</strong> Generar resúmenes de abstracts o secciones de artículos para una primera aproximación (verificar sesgos y precisión).</li>
-                          <li><strong>Reformulación de Preguntas:</strong> Ayudar a refinar o explorar ángulos alternativos para preguntas de investigación.</li>
-                          <li><strong>Organización de Notas:</strong> Agrupar notas de campo o fragmentos de texto por temas sugeridos por la IA (requiere supervisión).</li>
+                          <li><strong>Exploración temática inicial:</strong> Identificar posibles temas o palabras clave frecuentes en transcripciones o textos (NO reemplaza el análisis profundo, requiere validación humana).</li>
+                          <li><strong>Resumen de artículos:</strong> Generar resúmenes de abstracts o secciones de artículos para una primera aproximación (verificar sesgos y precisión).</li>
+                          <li><strong>Reformulación de preguntas:</strong> Ayudar a refinar o explorar ángulos alternativos para preguntas de investigación.</li>
+                          <li><strong>Organización de notas:</strong> Agrupar notas de campo o fragmentos de texto por temas sugeridos por la IA (requiere supervisión).</li>
                       </ul>
                        <p className="mt-4 italic text-sm text-primary"><strong>Advertencia Importante:</strong> Los modelos locales pueden tener dificultades con matices, ironía o contexto cultural complejo. Use estas funciones con escepticismo y como apoyo, no como análisis final.</p>
                   </SubSection>
                   <SubSection title="Apoyo Básico en Investigación Cuantitativa">
                       <p className="mb-3 text-light">Incluso sin saber programar, la IA puede ayudar con tareas relacionadas a datos:</p>
                       <ul className="custom-list list-inside space-y-2">
-                          <li><strong>Generación de Código Simple:</strong> Pedir scripts básicos en Python o R para tareas comunes (ej. "genera código Python con pandas para leer 'datos.csv' y mostrar las primeras 5 filas").</li>
-                          <li><strong>Explicación de Código:</strong> Pegar un fragmento de código (ej. de un tutorial) y pedir una explicación en lenguaje sencillo.</li>
-                          <li><strong>Formateo Básico de Texto:</strong> Ayudar a limpiar o estandarizar texto simple (ej. convertir a minúsculas, eliminar espacios extra).</li>
-                          <li><strong>Ideas para Visualización:</strong> Sugerir tipos de gráficos adecuados para ciertos tipos de datos (ej. "qué gráfico usar para comparar promedios entre 3 grupos").</li>
+                          <li><strong>Generación de código simple:</strong> Pedir scripts básicos en Python o R para tareas comunes (ej. "genera código Python con pandas para leer 'datos.csv' y mostrar las primeras 5 filas").</li>
+                          <li><strong>Explicación de código:</strong> Pegar un fragmento de código (ej. de un tutorial) y pedir una explicación en lenguaje sencillo.</li>
+                          <li><strong>Formateo básico de texto:</strong> Ayudar a limpiar o estandarizar texto simple (ej. convertir a minúsculas, eliminar espacios extra).</li>
+                          <li><strong>Ideas para visualización:</strong> Sugerir tipos de gráficos adecuados para ciertos tipos de datos (ej. "qué gráfico usar para comparar promedios entre 3 grupos").</li>
                       </ul>
                        <p className="mt-4 text-sm text-light">Ejemplo: Puede pedir a la IA "Genera un script de Python usando matplotlib para crear un gráfico de barras con estos datos: Grupo A=50, Grupo B=75, Grupo C=60". Luego puede copiar, pegar y (con algo de ayuda o tutoriales) ejecutar el código.</p>
                   </SubSection>
                   <SubSection title="Creación de Contenido (con Limitaciones de Hardware)">
                       <p className="mb-3 text-light">La generación multimedia es exigente. Esto es lo más factible localmente:</p>
                       <ul className="custom-list list-inside space-y-2">
-                          <li><strong>Generación de Guiones y Textos:</strong> Crear borradores de guiones para videos cortos, podcasts, o texto para diapositivas.</li>
-                          <li><strong>Transcripción de Audio (Muy Útil):</strong> Usar herramientas como <a href="https://github.com/openai/whisper" target="_blank" rel="noopener noreferrer" className="link-style">Whisper</a> (que puede correr en CPU) para transcribir entrevistas, clases grabadas o generar subtítulos.</li>
-                          <li><strong>Generación de Imágenes (Lento sin GPU):</strong> Es posible generar imágenes con Stable Diffusion localmente, pero será <strong>muy lento</strong> sin una GPU Nvidia potente.</li>
-                          <li><strong>Generación de Video/Audio (Poco Práctico Localmente):</strong> La generación de video o audio complejo localmente sin GPU potente es inviable o extremadamente lenta. Considere herramientas en línea.</li>
+                          <li><strong>Generación de guiones y textos:</strong> Crear borradores de guiones para videos cortos, podcasts, o texto para diapositivas.</li>
+                          <li><strong>Transcripción de audio (Muy Útil):</strong> Usar herramientas como <a href="https://github.com/openai/whisper" target="_blank" rel="noopener noreferrer" className="link-style">Whisper</a> (que puede correr en CPU) para transcribir entrevistas, clases grabadas o generar subtítulos.</li>
+                          <li><strong>Generación de imágenes (Lento sin GPU):</strong> Es posible generar imágenes con Stable Diffusion localmente, pero será <strong>muy lento</strong> sin una GPU Nvidia potente.</li>
+                          <li><strong>Generación de video/audio (poco práctico localmente):</strong> La generación de video o audio complejo localmente sin GPU potente es inviable o extremadamente lenta. Considere herramientas en línea.</li>
                       </ul>
                        <p className="mt-4 italic text-sm text-light"><strong>En resumen:</strong> Enfóquese en texto y transcripción localmente. Para multimedia de calidad/rápida, explore alternativas en línea o hardware especializado.</p>
                   </SubSection>
@@ -400,14 +400,14 @@
               <p className="text-main mb-8 leading-relaxed max-w-3xl mx-auto text-center">Para una implementación exitosa y responsable:</p>
               <div className="bg-background-light p-6 rounded-lg shadow-subtle">
                   <ul className="custom-list list-inside text-main space-y-3">
-                    <li><strong>Experimente con Calma:</strong> Empiece con tareas sencillas (resúmenes, ideas) para familiarizarse.</li>
-                    <li><strong>"Prompting" es Clave:</strong> Aprender a dar instrucciones claras y detalladas a la IA mejora mucho los resultados. Pruebe diferentes formas de preguntar.</li>
-                    <li><strong>Validación Humana SIEMPRE:</strong> No confíe ciegamente. Revise activamente la precisión, coherencia, posibles sesgos y relevancia de TODO lo generado por la IA. Usted es el responsable final.</li>
+                    <li><strong>Experimentar con calma:</strong> Empezar con tareas sencillas (resúmenes, ideas) para familiarizarse.</li>
+                    <li><strong>"Prompting" es clave:</strong> Aprender a dar instrucciones claras y detalladas a la IA mejora mucho los resultados. Prueben diferentes formas de preguntar.</li>
+                    <li><strong>Validación humana SIEMPRE:</strong> No confiar ciegamente. Revisar activamente la precisión, coherencia, posibles sesgos y relevancia de TODO lo generado por la IA. Somos los responsables finales.</li>
                     <li><strong>Discusión Ética Necesaria:</strong> Hable con estudiantes y colegas sobre uso responsable, plagio, privacidad (no ingrese datos sensibles) y el impacto de la IA.</li>
-                    <li><strong>Enfoque en el Aprendizaje:</strong> Use la IA para potenciar el pensamiento crítico, la creatividad o la eficiencia, no para reemplazar el esfuerzo intelectual fundamental.</li>
-                    <li><strong>Comparta Experiencias:</strong> Intercambie con otros profesores qué funciona, qué no, y qué prompts son útiles.</li>
-                    <li><strong>Sea Realista con el Hardware:</strong> Acepte que las tareas multimedia complejas serán lentas o inviables localmente sin una GPU potente.</li>
-                    <li><strong>Privacidad:</strong> Al usar modelos locales, sus datos no salen de su computadora, lo cual es una ventaja sobre muchos servicios en línea. Aun así, evite procesar información altamente confidencial.</li>
+                    <li><strong>Enfoque en el Aprendizaje:</strong> Usar la IA para potenciar el pensamiento crítico, la creatividad o la eficiencia, no para reemplazar el esfuerzo intelectual fundamental.</li>
+                    <li><strong>Comparta Experiencias:</strong> Intercambiar con otros colegas qué funciona, qué no, y qué prompts son útiles.</li>
+                    <li><strong>Sea Realista con el Hardware:</strong> Aceptar que las tareas multimedia complejas serán lentas o inviables localmente sin una GPU potente.</li>
+                    <li><strong>Privacidad:</strong> Al usar modelos locales, los datos no salen de su computadora, lo cual es una ventaja sobre muchos servicios en línea. Aun así, evitar procesar información altamente confidencial.</li>
                   </ul>
               </div>
             </Section>
@@ -416,7 +416,7 @@
             {/* Use primary background color */}
             <footer className="bg-primary text-white py-8">
               <div className="container mx-auto text-center px-4">
-                <p className="text-sm">&copy; {new Date().getFullYear()} Guía de IA para Profesores del DCSP - IBERO Ciudad de México.</p>
+                <p className="text-sm">&copy; {new Date().getFullYear()} Guía de IA para profes del DCSP - IBERO Ciudad de México.</p>
                 <p className="text-xs mt-1 opacity-80">Contenido con fines informativos y educativos.</p>
               </div>
             </footer>
