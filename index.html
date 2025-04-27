@@ -1,431 +1,432 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inteligencia Artificial para profesores del DCSP</title>
-  <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.20.15/babel.min.js"></script>
-  <style>
-    /* Define custom color variables */
-    :root {
-      --color-primary: #E00034; /* Red */
-      --color-secondary: #82786F; /* Gray */
-      --color-background-light: #f9fafb; /* Very light gray for subtle backgrounds */
-      --color-text-main: #374151; /* Darker gray for main text */
-      --color-text-secondary: #6b7280; /* Lighter gray for secondary text */
-    }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inteligencia Artificial para profesores del DCSP</title>
+  <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.20.15/babel.min.js"></script>
+  <style>
+    /* Define custom color variables */
+    :root {
+      --color-primary: #E00034; /* Red */
+      --color-secondary: #82786F; /* Gray */
+      --color-background-light: #f9fafb; /* Very light gray for subtle backgrounds */
+      --color-text-main: #374151; /* Darker gray for main text */
+      --color-text-secondary: #6b7280; /* Lighter gray for secondary text */
+    }
 
-    /* Apply custom colors using utility classes */
-    .bg-primary { background-color: var(--color-primary); }
-    .text-primary { color: var(--color-primary); }
-    .border-primary { border-color: var(--color-primary); }
-    .hover\:text-primary-light:hover { color: #ff4d6d; } /* Lighter red for hover */
+    /* Apply custom colors using utility classes */
+    .bg-primary { background-color: var(--color-primary); }
+    .text-primary { color: var(--color-primary); }
+    .border-primary { border-color: var(--color-primary); }
+    .hover\:text-primary-light:hover { color: #ff4d6d; } /* Lighter red for hover */
 
-    .bg-secondary { background-color: var(--color-secondary); }
-    .text-secondary { color: var(--color-secondary); }
-    .border-secondary { border-color: var(--color-secondary); }
+    .bg-secondary { background-color: var(--color-secondary); }
+    .text-secondary { color: var(--color-secondary); }
+    .border-secondary { border-color: var(--color-secondary); }
 
-    .bg-background-light { background-color: var(--color-background-light); }
-    .text-main { color: var(--color-text-main); }
-    .text-light { color: var(--color-text-secondary); }
+    .bg-background-light { background-color: var(--color-background-light); }
+    .text-main { color: var(--color-text-main); }
+    .text-light { color: var(--color-text-secondary); }
 
-    /* Navbar logo height */
-    .navbar-logo {
-      height: 40px; /* Adjust logo height */
-      filter: brightness(0) invert(1); /* Make logo white for red background */
-    }
+    /* Navbar logo height */
+    .navbar-logo {
+      height: 40px; /* Adjust logo height */
+      filter: brightness(0) invert(1); /* Make logo white for red background */
+    }
 
-    /* Custom list style with primary color bullet */
-    .custom-list li {
-        padding-left: 1.5em;
-        position: relative;
-        margin-bottom: 0.5rem; /* Add space between list items */
-    }
-    .custom-list li::before {
-        content: '•';
-        color: var(--color-primary); /* Use primary color for bullet */
-        font-weight: bold;
-        display: inline-block;
-        width: 1em;
-        margin-left: -1.5em;
-        position: absolute;
-        left: 0.5em;
-    }
+    /* Custom list style with primary color bullet */
+    .custom-list li {
+        padding-left: 1.5em;
+        position: relative;
+        margin-bottom: 0.5rem; /* Add space between list items */
+    }
+    .custom-list li::before {
+        content: '•';
+        color: var(--color-primary); /* Use primary color for bullet */
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1.5em;
+        position: absolute;
+        left: 0.5em;
+    }
 
-    /* Minimalist adjustments */
-    body {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
+    /* Minimalist adjustments */
+    body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
 
-    /* Subtle shadows */
-    .shadow-subtle {
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    }
-    .shadow-card {
-       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
-       transition: box-shadow 0.3s ease-in-out;
-    }
-    .shadow-card:hover {
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    }
+    /* Subtle shadows */
+    .shadow-subtle {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+    .shadow-card {
+       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+       transition: box-shadow 0.3s ease-in-out;
+    }
+    .shadow-card:hover {
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
 
-    /* Larger vertical padding for sections */
-    .section-padding {
-        padding-top: 4rem; /* 64px */
-        padding-bottom: 4rem; /* 64px */
-    }
+    /* Larger vertical padding for sections */
+    .section-padding {
+        padding-top: 4rem; /* 64px */
+        padding-bottom: 4rem; /* 64px */
+    }
 
-    /* Ensure links have clear visual style */
-    a.link-style {
-        color: var(--color-primary);
-        text-decoration: none;
-        font-weight: 500;
-    }
-    a.link-style:hover {
-        text-decoration: underline;
-    }
+    /* Ensure links have clear visual style */
+    a.link-style {
+        color: var(--color-primary);
+        text-decoration: none;
+        font-weight: 500;
+    }
+    a.link-style:hover {
+        text-decoration: underline;
+    }
 
-  </style>
+  </style>
 </head>
 <body class="bg-white font-sans text-main"> {/* Use main text color */}
-  <div id="root"></div>
+  <div id="root"></div>
 
-  <script type="text/babel">
-    // --- Navbar Component ---
-    function Navbar() {
-      return (
-        // Use primary background color
-        <nav className="bg-primary text-white p-4 fixed w-full top-0 shadow-subtle z-10">
-          <div className="container mx-auto flex justify-between items-center">
-            <div className="flex items-center space-x-3">
-              {/* Logo */}
-              <img
-                src="IBERO-CSP.png"
-                alt="Logo DCSP IBERO"
-                className="navbar-logo"
-                onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/150x40/ffffff/E00034?text=Logo'; }} // Fallback with white bg
-              />
-              {/* Navbar title */}
-              <h1 className="text-lg sm:text-xl font-semibold hidden sm:block">IA para profesores del DCSP</h1>
-            </div>
-            {/* Updated Navbar Links with new Tutoriales link */}
-            <ul className="flex flex-wrap space-x-3 sm:space-x-5 text-sm sm:text-base">
-              <li><a href="#inicio" className="hover:text-primary-light">Inicio</a></li>
-              <li><a href="#modelos" className="hover:text-primary-light">Modelos</a></li>
-              <li><a href="#usos" className="hover:text-primary-light">Usos</a></li>
-              <li><a href="#herramientas" className="hover:text-primary-light">Herramientas</a></li>
-              {/* Added Tutoriales Link */}
-              <li><a href="#tutoriales" className="hover:text-primary-light">Tutoriales</a></li>
-              <li><a href="#recomendaciones" className="hover:text-primary-light">Recomendaciones</a></li>
-            </ul>
-          </div>
-        </nav>
-      );
-    }
+  <script type="text/babel">
+    // --- Navbar Component ---
+    function Navbar() {
+      return (
+        // Use primary background color
+        <nav className="bg-primary text-white p-4 fixed w-full top-0 shadow-subtle z-10">
+          <div className="container mx-auto flex justify-between items-center">
+            <div className="flex items-center space-x-3">
+              {/* Logo */}
+              <img
+                src="IBERO-CSP.png"
+                alt="Logo DCSP IBERO"
+                className="navbar-logo"
+                onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/150x40/ffffff/E00034?text=Logo'; }} // Fallback with white bg
+              />
+              {/* Navbar title */}
+              <h1 className="text-lg sm:text-xl font-semibold hidden sm:block">IA para profesores del DCSP</h1>
+            </div>
+            {/* Updated Navbar Links with new Tutoriales link */}
+            <ul className="flex flex-wrap space-x-3 sm:space-x-5 text-sm sm:text-base">
+              <li><a href="#inicio" className="hover:text-primary-light">Inicio</a></li>
+              <li><a href="#modelos" className="hover:text-primary-light">Modelos</a></li>
+              <li><a href="#usos" className="hover:text-primary-light">Usos</a></li>
+              <li><a href="#herramientas" className="hover:text-primary-light">Herramientas</a></li>
+              {/* Added Tutoriales Link */}
+              <li><a href="#tutoriales" className="hover:text-primary-light">Tutoriales</a></li>
+              <li><a href="#recomendaciones" className="hover:text-primary-light">Recomendaciones</a></li>
+            </ul>
+          </div>
+        </nav>
+      );
+    }
 
-    // --- Section Component ---
-    // Added more padding and adjusted text colors
-    function Section({ id, title, children, bgColor = 'bg-white', textColor = 'text-main' }) {
-      return (
-        <section id={id} className={`section-padding px-4 sm:px-6 ${bgColor}`}>
-          <div className="container mx-auto max-w-5xl"> {/* Limit max width for readability */}
-            {/* Section title using primary color */}
-            <h2 className="text-3xl font-bold text-primary mb-8 text-center sm:text-left">{title}</h2>
-            <div className={textColor}> {/* Apply text color */}
-                {children}
-            </div>
-          </div>
-        </section>
-      );
-    }
+    // --- Section Component ---
+    // Added more padding and adjusted text colors
+    function Section({ id, title, children, bgColor = 'bg-white', textColor = 'text-main' }) {
+      return (
+        <section id={id} className={`section-padding px-4 sm:px-6 ${bgColor}`}>
+          <div className="container mx-auto max-w-5xl"> {/* Limit max width for readability */}
+            {/* Section title using primary color */}
+            <h2 className="text-3xl font-bold text-primary mb-8 text-center sm:text-left">{title}</h2>
+            <div className={textColor}> {/* Apply text color */}
+                {children}
+            </div>
+           </div>
+        </section>
+      );
+    }
 
-     // --- Subsection Component (for Usos) ---
-     // Adjusted background, padding, and shadow for minimalist style
-    function SubSection({ title, children }) {
-        return (
-            // Use light background, subtle shadow
-            <div className="bg-background-light p-6 rounded-lg shadow-subtle mb-8">
-                 {/* Subsection title using primary color */}
-                <h3 className="text-2xl font-semibold text-primary mb-4">{title}</h3>
-                <div className="text-main space-y-3"> {/* Use main text color */}
-                    {children}
-                </div>
-            </div>
-        );
-    }
+     // --- Subsection Component (for Usos) ---
+     // Adjusted background, padding, and shadow for minimalist style
+    function SubSection({ title, children }) {
+        return (
+            // Use light background, subtle shadow
+            <div className="bg-background-light p-6 rounded-lg shadow-subtle mb-8">
+                 {/* Subsection title using primary color */}
+                <h3 className="text-2xl font-semibold text-primary mb-4">{title}</h3>
+                <div className="text-main space-y-3"> {/* Use main text color */}
+                    {children}
+                </div>
+            </div>
+        );
+    }
 
-    // --- Model Card Component ---
-    // Simplified card style
-    function ModelCard({ name, description, uses, requirements }) {
-      return (
-        // White card, subtle shadow, increased padding
-        <div className="bg-white p-6 rounded-lg shadow-card border border-gray-100 mb-4 flex flex-col h-full">
-          {/* Model name using primary color */}
-          <h3 className="text-xl font-semibold text-primary mb-3">{name}</h3>
-          <div className="flex-grow space-y-2 text-sm text-main"> {/* Use main text color */}
-            <p><strong>Descripción:</strong> {description}</p>
-            <p><strong>Usos sugeridos:</strong> {uses}</p>
-          </div>
-          <p className="text-light text-xs mt-4"> {/* Use secondary text color */}
-            <strong>Requisitos aprox.:</strong> {requirements}
-          </p>
-        </div>
-      );
-    }
+    // --- Model Card Component ---
+    // Simplified card style
+    function ModelCard({ name, description, uses, requirements }) {
+      return (
+        // White card, subtle shadow, increased padding
+        <div className="bg-white p-6 rounded-lg shadow-card border border-gray-100 mb-4 flex flex-col h-full">
+          {/* Model name using primary color */}
+          <h3 className="text-xl font-semibold text-primary mb-3">{name}</h3>
+          <div className="flex-grow space-y-2 text-sm text-main"> {/* Use main text color */}
+            <p><strong>Descripción:</strong> {description}</p>
+            <p><strong>Usos sugeridos:</strong> {uses}</p>
+          </div>
+          <p className="text-light text-xs mt-4"> {/* Use secondary text color */}
+            <strong>Requisitos aprox.:</strong> {requirements}
+          </p>
+        </div>
+      );
+    }
 
-    // --- Tutorial Card Component ---
-    function TutorialCard({ title, description, link, type = 'Video' }) {
-        const typeColor = type === 'Video' ? 'bg-red-100 text-primary' : 'bg-blue-100 text-blue-700';
-        const typeIcon = type === 'Video' ? '▶️' : '📄'; // Simple icons
+    // --- Tutorial Card Component ---
+    function TutorialCard({ title, description, link, type = 'Video' }) {
+        const typeColor = type === 'Video' ? 'bg-red-100 text-primary' : 'bg-blue-100 text-blue-700';
+        const typeIcon = type === 'Video' ? '▶️' : '📄'; // Simple icons
 
-        return (
-            <a href={link} target="_blank" rel="noopener noreferrer" className="block bg-white p-5 rounded-lg shadow-card border border-gray-100 hover:shadow-lg transition-shadow duration-300 h-full">
-                <div className="flex justify-between items-start mb-2">
-                    <h4 className="text-lg font-semibold text-primary">{title}</h4>
-                    <span className={`text-xs font-medium px-2 py-0.5 rounded ${typeColor}`}>{typeIcon} {type}</span>
-                </div>
-                <p className="text-sm text-main">{description}</p>
-            </a>
-        );
-    }
-
-
-    // --- Main App Component ---
-    function App() {
-      return (
-        <div>
-          <Navbar />
-          {/* Adjust top padding for fixed navbar */}
-          <div className="pt-20 sm:pt-16">
-
-            {/* --- Inicio Section --- */}
-            <Section id="inicio" title="Inteligencia Artificial para profesores del DCSP" bgColor="bg-background-light">
-              <p className="text-lg text-main mb-4 leading-relaxed">
-               Hola nuevamente. Aquí algo más de información de qué esperar del recurso compartido que nos permitirá explorar en las posibilidades generativas de la IA para nuestra labor docente e investigativa. Podremos tomarnos nuestro tiempo para aprender, sin consumir costosos tokens, sin poner en riesgo nuestros datos, y sin que se cuelgue la compu o se nos acabe el crédito. También instalaremos R, RStudio, librerías de Python y todas las aplicaciones de IA que consideren pertinentes.
-                <p className="text-lg text-main leading-relaxed">
-                Navegar por las secciones para descubrir los LLM que instalaremos (se aceptan sugeriencias), <strong>usos realistas y aplicables</strong> con hardware local, herramientas sencillas, tutoriales introductorios y recomendaciones clave.
-              </p>
-            </Section>
-
-            {/* --- Modelos Section --- */}
-            <Section id="modelos" title="Trabajo con Modelos de Lenguaje LLM de cóigo abierto ejecutables Localmente">
-              <p className="text-lg text-main mb-4 leading-relaxed">
-             La computadora contará con modelos de lenguaje de acceso abierto (LLM) instalados localmente. Estos modelos presentan tanto ventajas como desventajas. Entre las primeras, destaca la protección de la privacidad de los datos, ya que estos no abandonan el equipo. En consecuencia, la velocidad de procesamiento se incrementa al evitar la transmisión de la consulta a través de la red. De hecho, es posible trabajar sin conexión a Internet, lo cual, además, contribuye ligeramente a la reducción del consumo energético global. Por otro lado, entre las desventajas se encuentran la necesidad de un equipo con potencia considerable (aspecto ya cubierto), una cierta curva de aprendizaje y la posibilidad de que estos modelos no alcancen la misma efectividad que los LLM comerciales en línea.              </p>
-              {/* Grid layout for model cards */}
-              <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6"> {/* Adjusted grid for potentially 2 columns */}
-                 <ModelCard
-                    name="LLaMA 3 (8B)"
-                    description="Modelo de Meta AI, buen equilibrio general. Versátil para texto."
-                    uses="Generar borradores de texto, resumir documentos, responder preguntas sobre un texto, brainstorming."
-                    requirements="~8-10 GB RAM (CPU, cuantizado). Funciona bien en 32GB RAM."
-                 />
-                 <ModelCard
-                    name="Mistral 7B"
-                    description="Rápido y eficiente para su tamaño. Excelente opción base."
-                    uses="Redacción, ideas, código simple, explicaciones rápidas."
-                    requirements="~6-8 GB RAM (CPU, cuantizado). Muy viable en CPU."
-                 />
-                 <ModelCard
-                    name="Stable Diffusion (Integrado con LLMs)"
-                    description="El modelo de código abierto más popular para generación de imágenes y puede integrarse con LLMs locales como LLaMA o Mistral."
-                    uses="Generación de imágenes de alta calidad a partir de prompts textuales, edición de imágenes (inpainting, outpainting), extensiones para generación de video (mediante interpolación de frames)."
-                    requirements="~4-6 GB RAM (CPU, cuantizado). Muy ligero."
-                 />
-                  <ModelCard
-                    name="Gemma 7B (by Google)"
-                    description="Modelo abierto de Google, buen rendimiento general y enfoque en responsabilidad."
-                    uses="Asistencia en investigación, generación de contenido diverso, escritura académica."
-                    requirements="GPU con 8-12 GB de VRAM para SDXL; Flux.1 requiere al menos 12 GB."
-                 />
-              </div>
-               <p className="text-light text-sm mt-8 text-center"> {/* Use secondary text color */}
-                 <i>Nota: Los LLM locales requieren una interface para acceder a ellos, usaremos Ollama y LM Studio. El rendimiento es más lento que los servicios en línea, pero los costos son nulos y la privacidad mayor .</i>
-               </p>
-            </Section>
-
-            {/* --- Usos Section --- */}
-            <Section id="usos" title="Usos prácticos de la IA Local para profesores del DCSP" bgColor="bg-background-light">
-              <p className="text-lg text-main mb-8 leading-relaxed max-w-3xl mx-auto text-center">
-                Con los modelos ejecutándose en su propia computadora, puede usar la IA como un <strong>asistente personal</strong> para diversas tareas docentes y de investigación. Recuerde: <strong>siempre revise y valide</strong> los resultados generados.
-              </p>
-              <div className="grid md:grid-cols-1 gap-8"> {/* Single column layout for subsections */}
-                  {/* Subsections remain largely the same content-wise, but wrapped in the updated SubSection component */}
-                  <SubSection title="Apoyo al Diseño de Clases">
-                      <p className="mb-3 text-light">Utilice la IA para agilizar la preparación de sus cursos:</p>
-                      <ul className="custom-list list-inside space-y-2">
-                          <li><strong>Lluvia de ideas:</strong> Generar temas para clases, debates, actividades o posibles preguntas de examen.</li>
-                          <li><strong>Borradores de materiales:</strong> Crear esquemas iniciales para clases, resúmenes de lecturas asignadas (verificar precisión), o ejemplos sencillos.</li>
-                          <li><strong>Formulación de preguntas:</strong> Elaborar preguntas de discusión, opción múltiple o verdadero/falso basadas en un texto que proporcione.</li>
-                          <li><strong>Ideas para rúbricas:</strong> Solicitar criterios de evaluación posibles para una tarea específica (requiere adaptación y refinamiento).</li>
-                      </ul>
-                  </SubSection>
-                  <SubSection title="Herramientas Pedagógicas Asistidas por IA">
-                      <p className="mb-3 text-light">Incorpore la IA de forma controlada en el aula:</p>
-                      <ul className="custom-list list-inside space-y-2">
-                          <li><strong>Simulaciones basadas en texto:</strong> Plantear escenarios simples donde la IA adopte un rol (ej. "actúa como un diplomático en esta negociación") para que los estudiantes interactúen.</li>
-                          <li><strong>Asistencia a la escritura (Guiada):</strong> Ayudar a estudiantes a parafrasear (con cita), organizar ideas o detectar errores gramaticales comunes (fomentando la revisión crítica).</li>
-                          <li><strong>Generador de ejemplos y casos:</strong> Crear pequeños casos de estudio o ejemplos adaptados a conceptos teóricos específicos que esté enseñando.</li>
-                          <li><strong>Glosarios rápidos:</strong> Generar definiciones iniciales de términos clave de una lectura (siempre verificar con fuentes académicas).</li>
-                      </ul>
-                  </SubSection>
-                  <SubSection title="Asistencia en Investigación Cualitativa">
-                      <p className="mb-3 text-light">La IA local puede ayudar en etapas iniciales del análisis (con precaución):</p>
-                      <ul className="custom-list list-inside space-y-2">
-                          <li><strong>Exploración temática inicial:</strong> Identificar posibles temas o palabras clave frecuentes en transcripciones o textos (NO reemplaza el análisis profundo, requiere validación humana).</li>
-                          <li><strong>Resumen de artículos:</strong> Generar resúmenes de abstracts o secciones de artículos para una primera aproximación (verificar sesgos y precisión).</li>
-                          <li><strong>Reformulación de preguntas:</strong> Ayudar a refinar o explorar ángulos alternativos para preguntas de investigación.</li>
-                          <li><strong>Organización de notas:</strong> Agrupar notas de campo o fragmentos de texto por temas sugeridos por la IA (requiere supervisión).</li>
-                      </ul>
-                       <p className="mt-4 italic text-sm text-primary"><strong>Advertencia Importante:</strong> Los modelos locales pueden tener dificultades con matices, ironía o contexto cultural complejo. Use estas funciones con escepticismo y como apoyo, no como análisis final.</p>
-                  </SubSection>
-                  <SubSection title="Apoyo Básico en Investigación Cuantitativa">
-                      <p className="mb-3 text-light">Incluso sin saber programar, la IA puede ayudar con tareas relacionadas a datos:</p>
-                      <ul className="custom-list list-inside space-y-2">
-                          <li><strong>Generación de código simple:</strong> Pedir scripts básicos en Python o R para tareas comunes (ej. "genera código Python con pandas para leer 'datos.csv' y mostrar las primeras 5 filas").</li>
-                          <li><strong>Explicación de código:</strong> Pegar un fragmento de código (ej. de un tutorial) y pedir una explicación en lenguaje sencillo.</li>
-                          <li><strong>Formateo básico de texto:</strong> Ayudar a limpiar o estandarizar texto simple (ej. convertir a minúsculas, eliminar espacios extra).</li>
-                          <li><strong>Ideas para visualización:</strong> Sugerir tipos de gráficos adecuados para ciertos tipos de datos (ej. "qué gráfico usar para comparar promedios entre 3 grupos").</li>
-                      </ul>
-                       <p className="mt-4 text-sm text-light">Ejemplo: Puede pedir a la IA "Genera un script de Python usando matplotlib para crear un gráfico de barras con estos datos: Grupo A=50, Grupo B=75, Grupo C=60". Luego puede copiar, pegar y (con algo de ayuda o tutoriales) ejecutar el código.</p>
-                  </SubSection>
-                  <SubSection title="Creación de Contenido (con Limitaciones de Hardware)">
-                      <p className="mb-3 text-light">La generación multimedia es exigente. Esto es lo más factible localmente:</p>
-                      <ul className="custom-list list-inside space-y-2">
-                          <li><strong>Generación de guiones y textos:</strong> Crear borradores de guiones para videos cortos, podcasts, o texto para diapositivas.</li>
-                          <li><strong>Transcripción de audio (Muy Útil):</strong> Usar herramientas como <a href="https://github.com/openai/whisper" target="_blank" rel="noopener noreferrer" className="link-style">Whisper</a> (que puede correr en CPU) para transcribir entrevistas, clases grabadas o generar subtítulos.</li>
-                          <li><strong>Generación de imágenes (Lento sin GPU):</strong> Es posible generar imágenes con Stable Diffusion localmente, pero será <strong>muy lento</strong> sin una GPU Nvidia potente.</li>
-                          <li><strong>Generación de video/audio (poco práctico localmente):</strong> La generación de video o audio complejo localmente sin GPU potente es inviable o extremadamente lenta. Considere herramientas en línea.</li>
-                      </ul>
-                       <p className="mt-4 italic text-sm text-light"><strong>En resumen:</strong> Enfóquese en texto y transcripción localmente. Para multimedia de calidad/rápida, explore alternativas en línea o hardware especializado.</p>
-                  </SubSection>
-              </div>
-            </Section>
-
-            {/* --- Herramientas Section --- */}
-            <Section id="herramientas" title="Herramientas sencillas para empezar">
-              <p className="text-main mb-8 text-center max-w-3xl mx-auto"> {/* Centered description */}
-                Estas aplicaciones facilitan descargar y usar los modelos en su computadora sin necesidad de conocimientos técnicos avanzados.
-              </p>
-              {/* Grid layout for tool cards */}
-              <div className="grid md:grid-cols-2 gap-6">
-                  {/* Simplified tool cards */}
-                  <div className="bg-background-light p-6 rounded-lg shadow-subtle">
-                      <h4 className="font-semibold text-primary mb-2">Ollama</h4>
-                      <p className="text-main text-sm">La opción más popular y sencilla. Permite ejecutar modelos con comandos simples o interfaces gráficas. <strong className="text-primary">Recomendado para empezar.</strong></p>
-                      <a href="https://ollama.com/" target="_blank" rel="noopener noreferrer" className="text-sm link-style mt-3 inline-block">Visitar Ollama ↗</a>
-                  </div>
-                   <div className="bg-background-light p-6 rounded-lg shadow-subtle">
-                      <h4 className="font-semibold text-primary mb-2">LM Studio</h4>
-                      <p className="text-main text-sm">Interfaz gráfica completa. Permite buscar, descargar y chatear con modelos. Muestra uso de RAM/CPU. Buena opción visual.</p>
-                      <a href="https://lmstudio.ai/" target="_blank" rel="noopener noreferrer" className="text-sm link-style mt-3 inline-block">Visitar LM Studio ↗</a>
-                  </div>
-                   <div className="bg-background-light p-6 rounded-lg shadow-subtle">
-                      <h4 className="font-semibold text-primary mb-2">Jan</h4>
-                      <p className="text-main text-sm">Alternativa de código abierto con interfaz gráfica amigable, enfocada en la ejecución local y offline.</p>
-                       <a href="https://jan.ai/" target="_blank" rel="noopener noreferrer" className="text-sm link-style mt-3 inline-block">Visitar Jan ↗</a>
-                  </div>
-                   <div className="bg-background-light p-6 rounded-lg shadow-subtle">
-                      <h4 className="font-semibold text-primary mb-2">Pinokio Browser</h4>
-                      <p className="text-main text-sm">Permite instalar y ejecutar varias apps de IA (incluyendo Whisper para transcripción de audio a texto, o interfaces para Stable Diffusion) con un solo clic.</p>
-                       <a href="https://pinokio.computer/" target="_blank" rel="noopener noreferrer" className="text-sm link-style mt-3 inline-block">Visitar Pinokio ↗</a>
-                  </div>
-              </div>
-            </Section>
-
-            {/* --- Tutoriales Section (New) --- */}
-            <Section id="tutoriales" title="Tutoriales Introductorios" bgColor="bg-background-light">
-                <p className="text-main mb-8 text-center max-w-3xl mx-auto">Recursos seleccionados para ayudarle a instalar y comenzar a usar las herramientas recomendadas.</p>
-                <div className="mb-10">
-                    <h3 className="text-2xl font-semibold text-primary mb-6 text-center">Ollama</h3>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <TutorialCard
-                            title="Instalar Ollama en 2 Minutos"
-                            description="Video corto y directo para instalar Ollama en Linux (similar en otros SO)."
-                            link="https://www.youtube.com/watch?v=VIDEO_ID_1" // Replace VIDEO_ID_1 with actual ID if available, using placeholder
-                            type="Video"
-                        />
-                         <TutorialCard
-                            title="Tu propio Chat GPT local y Gratis"
-                            description="Video que muestra cómo usar Ollama junto con OpenWebUI para una interfaz gráfica."
-                            link="https://www.youtube.com/watch?v=VIDEO_ID_2" // Replace VIDEO_ID_2
-                            type="Video"
-                        />
-                         <TutorialCard
-                            title="Qué es Ollama y cómo usarlo (Xataka)"
-                            description="Guía escrita detallada sobre qué es Ollama, cómo instalarlo y usarlo para ejecutar modelos."
-                            link="https://www.xataka.com/basics/que-ollama-como-usarlo-para-instalar-tu-ordenador-modelos-inteligencia-artificial-como-llama-deepseek"
-                            type="Artículo"
-                        />
-                    </div>
-                </div>
-
-                <div>
-                    <h3 className="text-2xl font-semibold text-primary mb-6 text-center">LM Studio</h3>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                         <TutorialCard
-                            title="IA GRATIS y FÁCIL! | Tutorial LM Studio"
-                            description="Video tutorial en español que cubre instalación y uso básico de LM Studio."
-                            link="https://www.youtube.com/watch?v=VIDEO_ID_7" // Replace VIDEO_ID_7
-                            type="Video"
-                        />
-                        <TutorialCard
-                            title="Guía paso a paso LM Studio (Telefónica)"
-                            description="Artículo detallado para instalar y empezar a usar LM Studio en Windows."
-                            link="https://telefonicatech.com/blog/guia-para-instalar-lm-studio"
-                            type="Artículo"
-                        />
-                         <TutorialCard
-                            title="Guía completa LM Studio (Toolify)"
-                            description="Otro artículo extenso sobre cómo usar LM Studio para generar texto en español."
-                            link="https://www.toolify.ai/es/ai-news-es/gua-completa-para-usar-lm-studio-y-generar-texto-en-espaol-851532"
-                            type="Artículo"
-                        />
-                    </div>
-                </div>
-                 <p className="text-light text-sm mt-8 text-center">
-                    <i>Nota: Los enlaces a videos de YouTube son ejemplos. Busque los títulos en YouTube para encontrar los videos correspondientes.</i>
-                 </p>
-            </Section>
+        return (
+            <a href={link} target="_blank" rel="noopener noreferrer" className="block bg-white p-5 rounded-lg shadow-card border border-gray-100 hover:shadow-lg transition-shadow duration-300 h-full">
+                <div className="flex justify-between items-start mb-2">
+                    <h4 className="text-lg font-semibold text-primary">{title}</h4>
+                    <span className={`text-xs font-medium px-2 py-0.5 rounded ${typeColor}`}>{typeIcon} {type}</span>
+                </div>
+                <p className="text-sm text-main">{description}</p>
+            </a>
+        );
+    }
 
 
-            {/* --- Recomendaciones Section --- */}
-            <Section id="recomendaciones" title="Recomendaciones Clave (Prácticas y Éticas)">
-              <p className="text-main mb-8 leading-relaxed max-w-3xl mx-auto text-center">Para una implementación exitosa y responsable:</p>
-              <div className="bg-background-light p-6 rounded-lg shadow-subtle">
-                  <ul className="custom-list list-inside text-main space-y-3">
-                    <li><strong>Experimentar con calma:</strong> Empezar con tareas sencillas (resúmenes, ideas) para familiarizarse.</li>
-                    <li><strong>"Prompting" es clave:</strong> Aprender a dar instrucciones claras y detalladas a la IA mejora mucho los resultados. Prueben diferentes formas de preguntar.</li>
-                    <li><strong>Validación humana SIEMPRE:</strong> No confiar ciegamente. Revisar activamente la precisión, coherencia, posibles sesgos y relevancia de TODO lo generado por la IA. Somos los responsables finales.</li>
-                    <li><strong>Discusión Ética Necesaria:</strong> Hable con estudiantes y colegas sobre uso responsable, plagio, privacidad (no ingrese datos sensibles) y el impacto de la IA.</li>
-                    <li><strong>Enfoque en el Aprendizaje:</strong> Usar la IA para potenciar el pensamiento crítico, la creatividad o la eficiencia, no para reemplazar el esfuerzo intelectual fundamental.</li>
-                    <li><strong>Comparta Experiencias:</strong> Intercambiar con otros colegas qué funciona, qué no, y qué prompts son útiles.</li>
-                    <li><strong>Sea Realista con el Hardware:</strong> Aceptar que las tareas multimedia complejas serán lentas o inviables localmente sin una GPU potente.</li>
-                    <li><strong>Privacidad:</strong> Al usar modelos locales, los datos no salen de su computadora, lo cual es una ventaja sobre muchos servicios en línea. Aun así, evitar procesar información altamente confidencial.</li>
-                  </ul>
-              </div>
-            </Section>
+    // --- Main App Component ---
+    function App() {
+      return (
+        <div>
+          <Navbar />
+          {/* Adjust top padding for fixed navbar */}
+          <div className="pt-20 sm:pt-16">
 
-            {/* --- Footer --- */}
-            {/* Use primary background color */}
-            <footer className="bg-primary text-white py-8">
-              <div className="container mx-auto text-center px-4">
-                <p className="text-sm">&copy; {new Date().getFullYear()} Guía de IA para profes del DCSP - IBERO Ciudad de México.</p>
-                <p className="text-xs mt-1 opacity-80">DECLARACIÓN DE USO DE IA. Gemini 2.5 Pro para generación de la página web y 2.o Flash para corregir redacción en el primer texto.</p>
-              </div>
-            </footer>
-          </div>
-        </div>
-      );
-    }
+            {/* --- Inicio Section --- */}
+            <Section id="inicio" title="Inteligencia Artificial para profesores del DCSP" bgColor="bg-background-light">
+              <p className="text-lg text-main mb-4 leading-relaxed">
+               Hola nuevamente. Aquí algo más de información de qué esperar del recurso compartido que nos permitirá explorar en las posibilidades generativas de la IA para nuestra labor docente e investigativa. Podremos tomarnos nuestro tiempo para aprender, sin consumir costosos tokens, sin poner en riesgo nuestros datos, y sin que se cuelgue la compu o se nos acabe el crédito. También instalaremos R, RStudio, librerías de Python y todas las aplicaciones de IA que consideren pertinentes.
+              </p> {/* Corrected the closing of the first p tag */}
+              <p className="text-lg text-main leading-relaxed">
+                Navegar por las secciones para descubrir los LLM que instalaremos (se aceptan sugeriencias), <strong>usos realistas y aplicables</strong> con hardware local, herramientas sencillas, tutoriales introductorios y recomendaciones clave.
+              </p>
+            </Section>
 
-    // --- Render the App ---
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(<App />);
-  </script>
+            {/* --- Modelos Section --- */}
+            <Section id="modelos" title="Trabajo con Modelos de Lenguaje LLM de cóigo abierto ejecutables Localmente">
+              <p className="text-lg text-main mb-4 leading-relaxed">
+             La computadora contará con modelos de lenguaje de acceso abierto (LLM) instalados localmente. Estos modelos presentan tanto ventajas como desventajas. Entre las primeras, destaca la protección de la privacidad de los datos, ya que estos no abandonan el equipo. En consecuencia, la velocidad de procesamiento se incrementa al evitar la transmisión de la consulta a través de la red. De hecho, es posible trabajar sin conexión a Internet, lo cual, además, contribuye ligeramente a la reducción del consumo energético global. Por otro lado, entre las desventajas se encuentran la necesidad de un equipo con potencia considerable (aspecto ya cubierto), una cierta curva de aprendizaje y la posibilidad de que estos modelos no alcancen la misma efectividad que los LLM comerciales en línea.              </p>
+              {/* Grid layout for model cards */}
+              <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6"> {/* Adjusted grid for potentially 2 columns */}
+                 <ModelCard
+                    name="LLaMA 3 (8B)"
+                    description="Modelo de Meta AI, buen equilibrio general. Versátil para texto."
+                    uses="Generar borradores de texto, resumir documentos, responder preguntas sobre un texto, brainstorming."
+                    requirements="~8-10 GB RAM (CPU, cuantizado). Funciona bien en 32GB RAM."
+                 />
+                 <ModelCard
+                    name="Mistral 7B"
+                    description="Rápido y eficiente para su tamaño. Excelente opción base."
+                    uses="Redacción, ideas, código simple, explicaciones rápidas."
+                    requirements="~6-8 GB RAM (CPU, cuantizado). Muy viable en CPU."
+                 />
+                 <ModelCard
+                    name="Stable Diffusion (Integrado con LLMs)"
+                    description="El modelo de código abierto más popular para generación de imágenes y puede integrarse con LLMs locales como LLaMA o Mistral."
+                    uses="Generación de imágenes de alta calidad a partir de prompts textuales, edición de imágenes (inpainting, outpainting), extensiones para generación de video (mediante interpolación de frames)."
+                    requirements="~4-6 GB RAM (CPU, cuantizado). Muy ligero."
+                 />
+                  <ModelCard
+                    name="Gemma 7B (by Google)"
+                    description="Modelo abierto de Google, buen rendimiento general y enfoque en responsabilidad."
+                    uses="Asistencia en investigación, generación de contenido diverso, escritura académica."
+                    requirements="GPU con 8-12 GB de VRAM para SDXL; Flux.1 requiere al menos 12 GB."
+                 />
+              </div>
+               <p className="text-light text-sm mt-8 text-center"> {/* Use secondary text color */}
+                 <i>Nota: Los LLM locales requieren una interface para acceder a ellos, usaremos Ollama y LM Studio. El rendimiento es más lento que los servicios en línea, pero los costos son nulos y la privacidad mayor .</i>
+               </p>
+            </Section>
+
+            {/* --- Usos Section --- */}
+            <Section id="usos" title="Usos prácticos de la IA Local para profesores del DCSP" bgColor="bg-background-light">
+              <p className="text-lg text-main mb-8 leading-relaxed max-w-3xl mx-auto text-center">
+                Con los modelos ejecutándose en su propia computadora, puede usar la IA como un <strong>asistente personal</strong> para diversas tareas docentes y de investigación. Recuerde: <strong>siempre revise y valide</strong> los resultados generados.
+              </p>
+              <div className="grid md:grid-cols-1 gap-8"> {/* Single column layout for subsections */}
+                  {/* Subsections remain largely the same content-wise, but wrapped in the updated SubSection component */}
+                  <SubSection title="Apoyo al Diseño de Clases">
+                      <p className="mb-3 text-light">Utilice la IA para agilizar la preparación de sus cursos:</p>
+                      <ul className="custom-list list-inside space-y-2">
+                          <li><strong>Lluvia de ideas:</strong> Generar temas para clases, debates, actividades o posibles preguntas de examen.</li>
+                          <li><strong>Borradores de materiales:</strong> Crear esquemas iniciales para clases, resúmenes de lecturas asignadas (verificar precisión), o ejemplos sencillos.</li>
+                          <li><strong>Formulación de preguntas:</strong> Elaborar preguntas de discusión, opción múltiple o verdadero/falso basadas en un texto que proporcione.</li>
+                          <li><strong>Ideas para rúbricas:</strong> Solicitar criterios de evaluación posibles para una tarea específica (requiere adaptación y refinamiento).</li>
+                      </ul>
+                  </SubSection>
+                  <SubSection title="Herramientas Pedagógicas Asistidas por IA">
+                      <p className="mb-3 text-light">Incorpore la IA de forma controlada en el aula:</p>
+                      <ul className="custom-list list-inside space-y-2">
+                          <li><strong>Simulaciones basadas en texto:</strong> Plantear escenarios simples donde la IA adopte un rol (ej. "actúa como un diplomático en esta negociación") para que los estudiantes interactúen.</li>
+                          <li><strong>Asistencia a la escritura (Guiada):</strong> Ayudar a estudiantes a parafrasear (con cita), organizar ideas o detectar errores gramaticales comunes (fomentando la revisión crítica).</li>
+                          <li><strong>Generador de ejemplos y casos:</strong> Crear pequeños casos de estudio o ejemplos adaptados a conceptos teóricos específicos que esté enseñando.</li>
+                          <li><strong>Glosarios rápidos:</strong> Generar definiciones iniciales de términos clave de una lectura (siempre verificar con fuentes académicas).</li>
+                      </ul>
+                  </SubSection>
+                  <SubSection title="Asistencia en Investigación Cualitativa">
+                      <p className="mb-3 text-light">La IA local puede ayudar en etapas iniciales del análisis (con precaución):</p>
+                      <ul className="custom-list list-inside space-y-2">
+                          <li><strong>Exploración temática inicial:</strong> Identificar posibles temas o palabras clave frecuentes en transcripciones o textos (NO reemplaza el análisis profundo, requiere validación humana).</li>
+                          <li><strong>Resumen de artículos:</strong> Generar resúmenes de abstracts o secciones de artículos para una primera aproximación (verificar sesgos y precisión).</li>
+                          <li><strong>Reformulación de preguntas:</strong> Ayudar a refinar o explorar ángulos alternativos para preguntas de investigación.</li>
+                          <li><strong>Organización de notas:</strong> Agrupar notas de campo o fragmentos de texto por temas sugeridos por la IA (requiere supervisión).</li>
+                      </ul>
+                       <p className="mt-4 italic text-sm text-primary"><strong>Advertencia Importante:</strong> Los modelos locales pueden tener dificultades con matices, ironía o contexto cultural complejo. Use estas funciones con escepticismo y como apoyo, no como análisis final.</p>
+                  </SubSection>
+                  <SubSection title="Apoyo Básico en Investigación Cuantitativa">
+                      <p className="mb-3 text-light">Incluso sin saber programar, la IA puede ayudar con tareas relacionadas a datos:</p>
+                      <ul className="custom-list list-inside space-y-2">
+                          <li><strong>Generación de código simple:</strong> Pedir scripts básicos en Python o R para tareas comunes (ej. "genera código Python con pandas para leer 'datos.csv' y mostrar las primeras 5 filas").</li>
+                          <li><strong>Explicación de código:</strong> Pegar un fragmento de código (ej. de un tutorial) y pedir una explicación en lenguaje sencillo.</li>
+                          <li><strong>Formateo básico de texto:</strong> Ayudar a limpiar o estandarizar texto simple (ej. convertir a minúsculas, eliminar espacios extra).</li>
+                          <li><strong>Ideas para visualización:</strong> Sugerir tipos de gráficos adecuados para ciertos tipos de datos (ej. "qué gráfico usar para comparar promedios entre 3 grupos").</li>
+                      </ul>
+                       <p className="mt-4 text-sm text-light">Ejemplo: Puede pedir a la IA "Genera un script de Python usando matplotlib para crear un gráfico de barras con estos datos: Grupo A=50, Grupo B=75, Grupo C=60". Luego puede copiar, pegar y (con algo de ayuda o tutoriales) ejecutar el código.</p>
+                  </SubSection>
+                  <SubSection title="Creación de Contenido (con Limitaciones de Hardware)">
+                      <p className="mb-3 text-light">La generación multimedia es exigente. Esto es lo más factible localmente:</p>
+                      <ul className="custom-list list-inside space-y-2">
+                          <li><strong>Generación de guiones y textos:</strong> Crear borradores de guiones para videos cortos, podcasts, o texto para diapositivas.</li>
+                          <li><strong>Transcripción de audio (Muy Útil):</strong> Usar herramientas como <a href="https://github.com/openai/whisper" target="_blank" rel="noopener noreferrer" className="link-style">Whisper</a> (que puede correr en CPU) para transcribir entrevistas, clases grabadas o generar subtítulos.</li>
+                          <li><strong>Generación de imágenes (Lento sin GPU):</strong> Es posible generar imágenes con Stable Diffusion localmente, pero será <strong>muy lento</strong> sin una GPU Nvidia potente.</li>
+                          <li><strong>Generación de video/audio (poco práctico localmente):</strong> La generación de video o audio complejo localmente sin GPU potente es inviable o extremadamente lenta. Considere herramientas en línea.</li>
+                      </ul>
+                       <p className="mt-4 italic text-sm text-light"><strong>En resumen:</strong> Enfóquese en texto y transcripción localmente. Para multimedia de calidad/rápida, explore alternativas en línea o hardware especializado.</p>
+                  </SubSection>
+              </div>
+            </Section>
+
+            {/* --- Herramientas Section --- */}
+            <Section id="herramientas" title="Herramientas sencillas para empezar">
+              <p className="text-main mb-8 text-center max-w-3xl mx-auto"> {/* Centered description */}
+                Estas aplicaciones facilitan descargar y usar los modelos en su computadora sin necesidad de conocimientos técnicos avanzados.
+              </p>
+              {/* Grid layout for tool cards */}
+              <div className="grid md:grid-cols-2 gap-6">
+                  {/* Simplified tool cards */}
+                  <div className="bg-background-light p-6 rounded-lg shadow-subtle">
+                      <h4 className="font-semibold text-primary mb-2">Ollama</h4>
+                      <p className="text-main text-sm">La opción más popular y sencilla. Permite ejecutar modelos con comandos simples o interfaces gráficas. <strong className="text-primary">Recomendado para empezar.</strong></p>
+                      <a href="https://ollama.com/" target="_blank" rel="noopener noreferrer" className="text-sm link-style mt-3 inline-block">Visitar Ollama ↗</a>
+                  </div>
+                   <div className="bg-background-light p-6 rounded-lg shadow-subtle">
+                      <h4 className="font-semibold text-primary mb-2">LM Studio</h4>
+                      <p className="text-main text-sm">Interfaz gráfica completa. Permite buscar, descargar y chatear con modelos. Muestra uso de RAM/CPU. Buena opción visual.</p>
+                      <a href="https://lmstudio.ai/" target="_blank" rel="noopener noreferrer" className="text-sm link-style mt-3 inline-block">Visitar LM Studio ↗</a>
+                  </div>
+                   <div className="bg-background-light p-6 rounded-lg shadow-subtle">
+                      <h4 className="font-semibold text-primary mb-2">Jan</h4>
+                      <p className="text-main text-sm">Alternativa de código abierto con interfaz gráfica amigable, enfocada en la ejecución local y offline.</p>
+                       <a href="https://jan.ai/" target="_blank" rel="noopener noreferrer" className="text-sm link-style mt-3 inline-block">Visitar Jan ↗</a>
+                  </div>
+                   <div className="bg-background-light p-6 rounded-lg shadow-subtle">
+                      <h4 className="font-semibold text-primary mb-2">Pinokio Browser</h4>
+                      <p className="text-main text-sm">Permite instalar y ejecutar varias apps de IA (incluyendo Whisper para transcripción de audio a texto, o interfaces para Stable Diffusion) con un solo clic.</p>
+                       <a href="https://pinokio.computer/" target="_blank" rel="noopener noreferrer" className="text-sm link-style mt-3 inline-block">Visitar Pinokio ↗</a>
+                  </div>
+              </div>
+            </Section>
+
+            {/* --- Tutoriales Section (New) --- */}
+            <Section id="tutoriales" title="Tutoriales Introductorios" bgColor="bg-background-light">
+                <p className="text-main mb-8 text-center max-w-3xl mx-auto">Recursos seleccionados para ayudarle a instalar y comenzar a usar las herramientas recomendadas.</p>
+                <div className="mb-10">
+                    <h3 className="text-2xl font-semibold text-primary mb-6 text-center">Ollama</h3>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <TutorialCard
+                            title="Instalar Ollama en 2 Minutos"
+                            description="Video corto y directo para instalar Ollama en Linux (similar en otros SO)."
+                            link="https://www.youtube.com/watch?v=VIDEO_ID_1" // Replace VIDEO_ID_1 with actual ID if available, using placeholder
+                            type="Video"
+                        />
+                         <TutorialCard
+                            title="Tu propio Chat GPT local y Gratis"
+                            description="Video que muestra cómo usar Ollama junto con OpenWebUI para una interfaz gráfica."
+                            link="https://www.youtube.com/watch?v=VIDEO_ID_2" // Replace VIDEO_ID_2
+                            type="Video"
+                             />
+                         <TutorialCard
+                            title="Qué es Ollama y cómo usarlo (Xataka)"
+                            description="Guía escrita detallada sobre qué es Ollama, cómo instalarlo y usarlo para ejecutar modelos."
+                            link="https://www.xataka.com/basics/que-ollama-como-usarlo-para-instalar-tu-ordenador-modelos-inteligencia-artificial-como-llama-deepseek"
+                            type="Artículo"
+                        />
+                    </div>
+                </div>
+
+                <div>
+                    <h3 className="text-2xl font-semibold text-primary mb-6 text-center">LM Studio</h3>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                         <TutorialCard
+                            title="IA GRATIS y FÁCIL! | Tutorial LM Studio"
+                            description="Video tutorial en español que cubre instalación y uso básico de LM Studio."
+                            link="https://www.youtube.com/watch?v=VIDEO_ID_7" // Replace VIDEO_ID_7
+                            type="Video"
+                        />
+                        <TutorialCard
+                            title="Guía paso a paso LM Studio (Telefónica)"
+                            description="Artículo detallado para instalar y empezar a usar LM Studio en Windows."
+                            link="https://telefonicatech.com/blog/guia-para-instalar-lm-studio"
+                            type="Artículo"
+                        />
+                         <TutorialCard
+                            title="Guía completa LM Studio (Toolify)"
+                            description="Otro artículo extenso sobre cómo usar LM Studio para generar texto en español."
+                            link="https://www.toolify.ai/es/ai-news-es/gua-completa-para-usar-lm-studio-y-generar-texto-en-espaol-851532"
+                            type="Artículo"
+                        />
+                    </div>
+                </div>
+                 <p className="text-light text-sm mt-8 text-center">
+                    <i>Nota: Los enlaces a videos de YouTube son ejemplos. Busque los títulos en YouTube para encontrar los videos correspondientes.</i>
+                 </p>
+            </Section>
+
+
+            {/* --- Recomendaciones Section --- */}
+            <Section id="recomendaciones" title="Recomendaciones Clave (Prácticas y Éticas)">
+              <p className="text-main mb-8 leading-relaxed max-w-3xl mx-auto text-center">Para una implementación exitosa y responsable:</p>
+              <div className="bg-background-light p-6 rounded-lg shadow-subtle">
+                  <ul className="custom-list list-inside text-main space-y-3">
+                    <li><strong>Experimentar con calma:</strong> Empezar con tareas sencillas (resúmenes, ideas) para familiarizarse.</li>
+                    <li><strong>"Prompting" es clave:</strong> Aprender a dar instrucciones claras y detalladas a la IA mejora mucho los resultados. Prueben diferentes formas de preguntar.</li>
+                    <li><strong>Validación humana SIEMPRE:</strong> No confiar ciegamente. Revisar activamente la precisión, coherencia, posibles sesgos y relevancia de TODO lo generado por la IA. Somos los responsables finales.</li>
+                    <li><strong>Discusión Ética Necesaria:</strong> Hable con estudiantes y colegas sobre uso responsable, plagio, privacidad (no ingrese datos sensibles) y el impacto de la IA.</li>
+                    <li><strong>Enfoque en el Aprendizaje:</strong> Usar la IA para potenciar el pensamiento crítico, la creatividad o la eficiencia, no para reemplazar el esfuerzo intelectual fundamental.</li>
+                    <li><strong>Comparta Experiencias:</strong> Intercambiar con otros colegas qué funciona, qué no, y qué prompts son útiles.</li>
+                    <li><strong>Sea Realista con el Hardware:</strong> Aceptar que las tareas multimedia complejas serán lentas o inviables localmente sin una GPU potente.</li>
+                    <li><strong>Privacidad:</strong> Al usar modelos locales, los datos no salen de su computadora, lo cual es una ventaja sobre muchos servicios en línea. Aun así, evitar procesar información altamente confidencial.</li>
+                  </ul>
+              </div>
+            </Section>
+
+            {/* --- Footer --- */}
+            {/* Use primary background color */}
+            <footer className="bg-primary text-white py-8">
+              <div className="container mx-auto text-center px-4">
+                <p className="text-sm">© {new Date().getFullYear()} Guía de IA para profes del DCSP - IBERO Ciudad de México.</p>
+                <p className="text-xs mt-1 opacity-80">DECLARACIÓN DE USO DE IA. Gemini 2.5 Pro para generación de la página web y 2.o Flash para corregir redacción en el primer texto.</p>
+              </div>
+            </footer>
+          </div>
+        </div>
+      );
+    }
+
+    // --- Render the App ---
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
 </body>
 </html>
